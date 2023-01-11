@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int tribonacci(int n) {
+        if(n==1 || n==0)
+            return n;
+        if(n==2)
+            return 1;
+
+        int nMinus3 = 0, nMinus2 = 1, nMinus1 = 1;
+
+        for(int i=3;i<=n;i++)
+        {
+            int curr = nMinus1 + nMinus2 + nMinus3;
+
+            nMinus3 = nMinus2;
+            nMinus2 = nMinus1;
+            nMinus1 = curr;
+        }
+
+        return nMinus1;
+    }
+};

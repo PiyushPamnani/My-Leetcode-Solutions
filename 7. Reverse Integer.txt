@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int reverse(int x) {
+        int count=0;
+        long int n=1,p,revx=0;
+        long long temp;
+        if(x>0)
+        {
+            while(n<=x)
+            {
+                n *= 10;
+                count++;
+            }
+        }
+        else
+        {
+            temp = -1*((long long)x);
+            while(n<=temp)
+            {
+                n *= 10;
+                count++;
+            }
+        }
+        p = n/10;
+        n = 1;
+        for(int i=0;i<count;i++)
+        {
+            revx += ((x/n)%10)*p;
+            n *= 10;
+            p /= 10;
+        }
+        if(revx>=INT_MAX || revx<=INT_MIN)
+            return 0;
+        return revx;
+    }
+};
