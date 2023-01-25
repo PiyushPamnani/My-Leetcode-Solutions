@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int alternateDigitSum(int n) {
+        long long int temp = 1;
+        while(temp <= n)
+            temp *= 10;
+        temp /= 10;
+        int sum = 0, num = 1;
+        while(temp)
+        {
+            sum += num *(n / temp) % 10;
+            num *= -1;
+            temp /= 10;
+        }
+        return sum;
+    }
+};
