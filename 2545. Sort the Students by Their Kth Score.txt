@@ -1,0 +1,30 @@
+/* Space Complexity
+Constant: O(1)
+
+Code: */
+
+
+class Solution {
+public:
+    vector<vector<int>> sortTheStudents(vector<vector<int>>& score, int k) {
+        int row = score.size(), col = score[0].size();
+        int i = 0;
+        while(i < k)
+            i++;
+        for(int row_itr = 0; row_itr < row; row_itr++)
+        {
+            int temp = score[row_itr][i], ptr = 0;
+            for(int j = row_itr; j < row; j++)
+            {
+                if(temp < score[j][i])
+                    temp = score[j][i];
+            }
+            while(score[ptr][i] != temp)
+                ptr++;
+            if(temp != score[row_itr][i])
+                for(int i_ptr = 0; i_ptr < col; i_ptr++)
+                    swap(score[row_itr][i_ptr], score[ptr][i_ptr]);
+        }
+        return score;
+    }
+};
